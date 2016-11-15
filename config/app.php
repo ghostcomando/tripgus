@@ -39,7 +39,7 @@ return [
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/Bogota',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -135,15 +135,16 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		Collective\Html\HtmlServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
 		 */
-		'App\Providers\AppServiceProvider',
-		'App\Providers\BusServiceProvider',
-		'App\Providers\ConfigServiceProvider',
-		'App\Providers\EventServiceProvider',
-		'App\Providers\RouteServiceProvider',
+		'Tripgus\Providers\AppServiceProvider',
+		'Tripgus\Providers\BusServiceProvider',
+		'Tripgus\Providers\ConfigServiceProvider',
+		'Tripgus\Providers\EventServiceProvider',
+		'Tripgus\Providers\RouteServiceProvider',
 
 	],
 
@@ -192,6 +193,8 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'Form' => Collective\Html\FormFacade::class,
+      	'Html' => Collective\Html\HtmlFacade::class,
 
 	],
 

@@ -1,4 +1,4 @@
-<?php namespace App\Commands;
+<?php namespace Tripgus\Commands;
 
 abstract class Command {
 
