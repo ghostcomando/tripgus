@@ -11,7 +11,13 @@
 |
 */
 Route::get('/', 'FrontController@index');
+Route::get('Help/HowDoesItWork', 'HelpController@howDoesItWork');
+Route::get('Help/HowToTravel', 'HelpController@howToTravel');
+Route::get('Help/HowToBeAGuide', 'HelpController@howToBeAGuide');
+Route::get('Help/Questions', 'HelpController@questions');
 Route::get('logout', 'LogController@logout');
-Route::resource('user', 'UserController');
+Route::resource('Help', 'HelpController');
+Route::resource('User', 'UserController');
 Route::resource('log', 'LogController');
+Route::resource('Admin', 'AdminController');
 
