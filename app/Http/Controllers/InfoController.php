@@ -6,16 +6,19 @@ use Illuminate\Http\Request;
 
 use Tripgus\Http\Requests;
 use Tripgus\Http\Controllers\Controller;
-use Tripgus\HelpPage;
+use Tripgus\Helppage;
 use Tripgus\Info;
 use Session;
 use Redirect;
 use DB;
 
-class AdminController extends Controller
+class InfoController extends Controller
 {
 
-    
+    public function find(Route $route)
+    {
+        $this->info = Info::find($route->getParameter('Info'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,20 +26,20 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $helpPages = Helppage::all();
+        $infos = Info::paginate(7);
+        return view('admin.help.list', compact('infos', 'helpPages'));
     }
-
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function create()
     {
-        
+        $Vistas = Helppage::lists('helpPageName','id');
+        return view('admin.help.create', compact('Vistas'));
     }
 
     /**
@@ -47,7 +50,9 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        
+        Info::create($request->all());
+        Session::flash('message', 'usuario creado correctamente');
+        return redirect('/Admin/Help/create');
     }
 
     /**
@@ -69,7 +74,9 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        
+        $Vistas = Helppage::lists('helpPageName','id');
+        $Info = Info::find($id);
+        return view('Admin.help.edit', ['info'=>$Info], compact('Vistas'));
     }
 
     /**
@@ -81,7 +88,11 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Info = Info::find($id);
+        $Info->fill($request->all());
+        $Info->save();
+        Session::flash('message', 'usuario modificado correctamente');
+        return Redirect::to('/Admin/Help');
     }
 
     /**

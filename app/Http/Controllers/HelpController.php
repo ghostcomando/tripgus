@@ -3,7 +3,7 @@
 namespace Tripgus\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Tripgus\Info;
 use Tripgus\Http\Requests;
 use Tripgus\Http\Controllers\Controller;
 
@@ -27,22 +27,26 @@ class HelpController extends Controller
 
     public function howDoesItwork()
     {
-        return view('help.howDoesItwork');
+        $infos = Info::where('helppage_id', '2')->get();
+        return view('help.howDoesItwork', compact('infos'));
     }
 
     public function howToTravel()
     {
-        return view('help.howToTravel');
+        $infos = Info::where('helppage_id', '3')->get();
+        return view('help.howToTravel', compact('infos'));
     }
 
     public function howToBeAGuide()
     {
-        return view('help.howToBeAGuide');
+        $infos = Info::where('helppage_id', '4')->get();
+        return view('help.howToBeAGuide', compact('infos'));
     }
 
     public function questions()
     {
-        return view('help.questions');
+        $infos = Info::where('helppage_id', '5')->get();
+        return view('help.questions', compact('infos'));
     } 
 
    
