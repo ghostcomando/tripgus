@@ -21,4 +21,5 @@ Route::resource('Admin/Help', 'InfoController');
 Route::resource('User', 'UserController');
 Route::resource('log', 'LogController');
 Route::resource('Admin', 'AdminController');
+Route::resource('Myplans', 'TouristicPlanController');
 

@@ -11,6 +11,6 @@ class Helppage extends Model
 
 	public function infos()
     {
-        return $this->hasMany('App\Info');
+        return $this->hasMany('Tripgus\Info');
     }
 }

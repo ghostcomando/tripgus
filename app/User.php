@@ -22,7 +22,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'lastname', 'email', 'password', 'birthdate'];
+	protected $fillable = ['name', 'lastname', 'email', 'password', 'birthdate', 'userType_id'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
@@ -40,5 +40,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			$this->attributes['password'] = \Hash::make($valor);
 		}
 	}
+
+
+	public function userRoles()
+    {
+        return $this->hasMany('Tripgus\UserRole');
+    }
+
+    public function reservations()
+    {
+        return $this->hasMany('Tripgus\Reservation');
+    }
+
+    public function touristicPlans()
+    {
+        return $this->hasMany('Tripgus\TouristicPlan');
+    }		
 
 }
