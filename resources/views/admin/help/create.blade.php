@@ -32,7 +32,7 @@
 	        		<div class="x_content">
 	          			<br />
 						{!!Form::open(['route'=>'Admin.Help.store', 'method'=>'POST', 'class'=>'form-horizontal form-label-left'])!!}
-							@include('forms.Admin.help')
+							@include('forms.admin.help')
 							<div class="form-group">
 				              <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
 				              	{!!Form::submit('Agregar',['class'=>'btn btn-primary'])!!}

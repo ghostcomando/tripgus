@@ -3,9 +3,13 @@
 namespace Tripgus\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Tripgus\Country;
+use Tripgus\State;
+use Tripgus\City;
 use Tripgus\Http\Requests;
 use Tripgus\Http\Controllers\Controller;
+use Input;
+use Response;
 
 class TouristicPlanController extends Controller
 {
@@ -15,8 +19,24 @@ class TouristicPlanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
         return view('myPlans/index');
+    }
+
+    public function states()
+    {
+        $pais_id = Input::get('pais_id');
+        $states = State::where('country_id', '=', $pais_id)->get();
+
+        return Response::json([$states]);
+    }
+
+    public function cities()
+    {
+        $state_id = Input::get('estado_id');
+        $cities = City::where('state_id', '=', $state_id)->get();
+
+        return Response::json([$cities]);
     }
 
     /**
@@ -26,7 +46,9 @@ class TouristicPlanController extends Controller
      */
     public function create()
     {
-        return view('myPlans/create');
+        $States = country::find(1)->States;
+        $Pais = Country::lists('country','id');
+        return view('myPlans/create', compact('Pais', 'States'));
     }
 
     /**

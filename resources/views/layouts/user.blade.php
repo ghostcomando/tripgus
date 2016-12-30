@@ -5,12 +5,13 @@
 	<title>Tripgus</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/front.css">
-	<link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
-	<link rel="stylesheet" href="css/font-awesome.css">
-	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-	<script type="text/javascript" src="js/Moment.js"></script>
-	<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+	<link rel="stylesheet" href="../../../css/front.css">
+	<link rel="stylesheet" href="../../../css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" href="../../../css/font-awesome.css">
+	<script type="text/javascript" src="../../../js/jquery-3.1.1.js"></script>
+	<script type="text/javascript" src="../../../js/Moment.js"></script>
+	<script type="text/javascript" src="../../../js/bootstrap-datetimepicker.js"></script>
+	<script type="text/javascript" src="../../../js/dropdown.js"></script>
 </head>
 <body>
 	<header>
@@ -23,7 +24,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a href="/" class="navbar-brand">
-					<img alt="Brand" src="images/Tripgus.jpg">
+					<img alt="Brand" src="../../../images/Tripgus.jpg">
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navegacion-Tripgus1">
@@ -76,7 +77,20 @@
 			</div>
 		</nav>
 	</header>
-	@yield('content')
+	<section class="main container">
+		<div class="row">
+			<aside class="col-md-3 hidden-xs hidden-sm">
+				<div class="list-group">
+					<a href="#" class="list-group-item">Editar perfil</a>
+					<a href="#" class="list-group-item">Fotos, s&iacute;mbolos y v&iacute;deos</a>
+					<a href="#" class="list-group-item">Confianza y verificaci&oacute;n</a>
+					<a href="#" class="list-group-item">Evaluaciones</a>
+					<a href="#" class="list-group-item">Referencias</a>
+				</div>
+			</aside>
+			@yield('content')
+		</div>	
+	</section>
 	<footer>		
 		<div class="container-fluid">
 			<div class="panel panel-default">		 	 
