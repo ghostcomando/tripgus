@@ -66,8 +66,8 @@
 				</div>
 				<div class="collapse navbar-collapse" id="navegacion-Tripgus2">
 					<ul class="nav navbar-nav">
-						<li><a href="#">Escritorio</a></li>
-						<li><a href="#">Bandeja de entrada </a></li>
+						<li><a href="/User">Mi perfil</a></li>
+						<li><a href="/Myplans">Mis planes </a></li>
 						<li><a href="#">Tus anuncios</a></li>
 						<li><a href="#">Perfil</a></li>
 						<li><a href="#">Cuenta</a></li>
@@ -79,15 +79,6 @@
 	</header>
 	<section class="main container">
 		<div class="row">
-			<aside class="col-md-3 hidden-xs hidden-sm">
-				<div class="list-group">
-					<a href="#" class="list-group-item">Editar perfil</a>
-					<a href="#" class="list-group-item">Fotos, s&iacute;mbolos y v&iacute;deos</a>
-					<a href="#" class="list-group-item">Confianza y verificaci&oacute;n</a>
-					<a href="#" class="list-group-item">Evaluaciones</a>
-					<a href="#" class="list-group-item">Referencias</a>
-				</div>
-			</aside>
 			@yield('content')
 		</div>	
 	</section>

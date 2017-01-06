@@ -16,21 +16,28 @@
 		  </div>
 		</div>	
 		<div class="form-group">
-		  {!!Form::label('ciudad','Ciudad / Municipio*: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'])!!}
+		  {!!Form::label('city_id','Ciudad / Municipio*: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'])!!}
 		  <div class="col-md-9 col-sm-6 col-xs-12">
-		    {!!Form::select('ciudad', [], null, ['id'=>'ciudad', 'class' => 'form-control', 'placeholder' => 'Seleccione una opcion'] )!!}
+		    {!!Form::select('city_id', [], null, ['id'=>'ciudad', 'class' => 'form-control', 'placeholder' => 'Seleccione una opcion'] )!!}
+		  </div>
+		</div>
+		{!!Form::hidden('user_id', Auth::User()->id)!!}
+		<div class="form-group">
+		  {!!Form::label('description','Descripción*:', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'])!!}
+		  <div class="col-md-9 col-sm-6 col-xs-12">
+		    {!!Form::textarea('description',null, ['class' => 'resizable_textarea form-control', 'placeholder' =>'Descripción del plan turístico'])!!}
 		  </div>
 		</div>
 		<div class="form-group">
-		  {!!Form::label('descripcion','Descripción*:', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'])!!}
+		  {!!Form::label('price','Precio*: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'])!!}
 		  <div class="col-md-9 col-sm-6 col-xs-12">
-		    {!!Form::textarea('descripcion',null, ['class' => 'resizable_textarea form-control', 'placeholder' =>'Descripción del plan turístico'])!!}
+		    {!!Form::text('price',null, ['class' => 'form-control col-md-7 col-xs-12', 'placeholder' =>'$'])!!}
 		  </div>
 		</div>
 		<div class="form-group">
-		  {!!Form::label('precio','Precio*: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'])!!}
+		  {!!Form::label('image','Imagen*: ', ['class' => 'control-label col-md-3 col-sm-3 col-xs-12'])!!}
 		  <div class="col-md-9 col-sm-6 col-xs-12">
-		    {!!Form::text('precio',null, ['class' => 'form-control col-md-7 col-xs-12', 'placeholder' =>'$'])!!}
+		    {!!Form::file('image')!!}
 		  </div>
 		</div>	
 	</div>				 

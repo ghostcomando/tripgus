@@ -3,11 +3,12 @@
 namespace Tripgus;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class TouristicPlan extends Model
 {
     protected $table = 'touristic_plans';
-	protected $fillable = ['touristicPlan', 'description', 'city_id', 'user_id'];
+	protected $fillable = ['description','price', 'image', 'city_id', 'user_id'];
 
 	public function city()
     {
@@ -22,5 +23,12 @@ class TouristicPlan extends Model
     public function reservations()
     {
         return $this->hasMany('Tripgus\Reservation');
+    }
+
+    public function setImageAttribute($image)
+    {
+        $name = Carbon::now()->second.$image->getClientOriginalName();
+        $this->attributes['image'] = $name;
+        \Storage::disk('local')->put($name, \File::get($image));
     }		
 }

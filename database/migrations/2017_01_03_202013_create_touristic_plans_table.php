@@ -14,8 +14,9 @@ class CreateTouristicPlansTable extends Migration
     {
         Schema::create('touristic_plans', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('touristicPlan');
             $table->text('description');
+            $table->integer('price');
+            $table->string('image');
             $table->integer('city_id');
             $table->foreign('city_id')->references('id')->on('cities');
             $table->integer('user_id');

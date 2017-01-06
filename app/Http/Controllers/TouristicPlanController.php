@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use Tripgus\Country;
 use Tripgus\State;
 use Tripgus\City;
+use Tripgus\TouristicPlan;
 use Tripgus\Http\Requests;
 use Tripgus\Http\Controllers\Controller;
 use Input;
 use Response;
+use Session;
+use Redirect;
 
 class TouristicPlanController extends Controller
 {
@@ -19,8 +22,8 @@ class TouristicPlanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        return view('myPlans/index');
+    {   $plans = TouristicPlan::paginate(5);
+        return view('myPlans/index', compact('plans'));
     }
 
     public function states()
@@ -48,7 +51,7 @@ class TouristicPlanController extends Controller
     {
         $States = country::find(1)->States;
         $Pais = Country::lists('country','id');
-        return view('myPlans/create', compact('Pais', 'States'));
+        return view('Myplans/create', compact('Pais', 'States'));
     }
 
     /**
@@ -59,7 +62,9 @@ class TouristicPlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TouristicPlan::create($request->all());
+        Session::flash('message', 'Se ha registrado correctamente');
+        return redirect('Myplans/create');
     }
 
     /**
@@ -81,7 +86,10 @@ class TouristicPlanController extends Controller
      */
     public function edit($id)
     {
-        return view('myPlans/edit');
+        $States = country::find(1)->States;
+        $Pais = Country::lists('country','id');
+        $Plan = TouristicPlan::find($id);
+        return view('Myplans.edit', ['plan'=>$Plan], compact('Pais', 'States'));
     }
 
     /**
@@ -93,7 +101,11 @@ class TouristicPlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $Plan = TouristicPlan::find($id);
+        $Plan->fill($request->all());
+        $Plan->save();
+        Session::flash('message', 'usuario modificado correctamente');
+        return Redirect::to('/Myplans');
     }
 
     /**
@@ -104,6 +116,8 @@ class TouristicPlanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        TouristicPlan::destroy($id);
+        Session::flash('message', 'usuario eliminado correctamente');
+        return Redirect::to('/Myplans');
     }
 }
