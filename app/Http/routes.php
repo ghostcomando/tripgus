@@ -22,6 +22,7 @@ Route::resource('User', 'UserController');
 Route::resource('log', 'LogController');
 Route::resource('Admin', 'AdminController');
 Route::resource('Myplans', 'TouristicPlanController');
+Route::resource('Myreservations', 'ReservationController');
 Route::get('/states', 'TouristicPlanController@states');
 Route::get('/cities', 'TouristicPlanController@cities');
 

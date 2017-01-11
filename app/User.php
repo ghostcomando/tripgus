@@ -55,6 +55,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     public function touristicPlans()
     {
         return $this->hasMany('Tripgus\TouristicPlan');
+    }	
+
+
+    public function registrationLogins()
+    {
+        return $this->hasMany('Tripgus\RegistrationLogin');
     }		
 
 }

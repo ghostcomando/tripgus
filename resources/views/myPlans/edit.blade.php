@@ -9,10 +9,10 @@
 <aside class="col-md-9">
 {!!Form::model($plan, ['route'=>['Myplans.update', $plan->id], 'method'=>'PUT', 'files'=>true])!!}
 	@include('forms.user.myplan')
-	<div class="form-group">
-		{!!Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
-	</div>
-	{!!Form::open(['route'=>['Myplans.destroy', $plan->id], 'method'=>'DELETE'])!!}
+	{!!Form::submit('Actualizar',['class'=>'btn btn-primary'])!!}
+{!!Form::close()!!}
+<br>
+{!!Form::open(['route'=>['Myplans.destroy', $plan->id], 'method'=>'DELETE'])!!}
 	{!!Form::submit('Eliminar',['class'=>'btn btn-danger'])!!}
 {!!Form::close()!!}
 </aside>

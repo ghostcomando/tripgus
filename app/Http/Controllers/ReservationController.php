@@ -3,16 +3,11 @@
 namespace Tripgus\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use Tripgus\Http\Requests;
 use Tripgus\Http\Controllers\Controller;
-use Tripgus\RegistrationLogin;
-use Auth;
-use Session;
-use Redirect;
-use DB;
 
-
-class LogController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +16,7 @@ class LogController extends Controller
      */
     public function index()
     {
-        
-    }
-
-    public function logout()
-    {
-        Auth::logout();
-        return Redirect::to('/');
+        return view('myReservations/index');
     }
 
     /**
@@ -37,7 +26,7 @@ class LogController extends Controller
      */
     public function create()
     {
-        //
+        return view('myReservations/create');
     }
 
     /**
@@ -48,19 +37,7 @@ class LogController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::attempt(['email'=> $request['email'], 'password'=>$request['password']]))
-        {
-            $User_id = DB::table('users')->where('email', $request['email'])->pluck('id');
-            RegistrationLogin::create([
-                'user_id' => $User_id,
-                ]);
-            return Redirect::to('User');
-        }
-        else
-        {
-            Session::flash('message-error', 'Sus datos son incorrectos');
-            return Redirect::to('/');
-        }
+        //
     }
 
     /**
@@ -82,7 +59,7 @@ class LogController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('myReservations/edit');
     }
 
     /**

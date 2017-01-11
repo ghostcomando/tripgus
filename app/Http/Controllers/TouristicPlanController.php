@@ -13,6 +13,7 @@ use Input;
 use Response;
 use Session;
 use Redirect;
+use Auth;
 
 class TouristicPlanController extends Controller
 {
@@ -22,7 +23,7 @@ class TouristicPlanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   $plans = TouristicPlan::paginate(5);
+    {   $plans = TouristicPlan::where('user_id', Auth::User()->id)->paginate(5);
         return view('myPlans/index', compact('plans'));
     }
 
@@ -105,7 +106,7 @@ class TouristicPlanController extends Controller
         $Plan->fill($request->all());
         $Plan->save();
         Session::flash('message', 'usuario modificado correctamente');
-        return Redirect::to('/Myplans');
+        return Redirect::to('/');
     }
 
     /**
